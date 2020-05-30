@@ -1,7 +1,116 @@
-/*
-enter css
- */
+:root {
+  --swipe-width:240px;
+  --swipe-heigh:96px;
+  --swipe-gap:4px;
+  --smile-size:calc(var(--swipe-heigh) - 2 * var(--swipe-gap));
+  --smile-mouth-size: 32px;
+}
+
+
+.wrapper {
+  position: relative;
+  display: inline-block;
+  width: var(--swipe-width);
+  height: var(--swipe-heigh);
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    &:checked + .slider {
+      background-color: #ffb5b5;
+    }
+
+    &:focus + .slider {
+      box-shadow: 0 0 1px #ffb5b5;
+    }
+
+    &:checked + .slider .smile {
+      transform: translateX( calc(var(--swipe-width) - var(--swipe-gap) - var(--swipe-gap) - var(--smile-size)));
+      .smile_leye {
+        height: 6px;
+        width: 6px;
+        border-radius: 50%;
+        background-color: black;
+      }
+      .smile_reye {
+        height: 6px;
+        width: 6px;
+        border-radius: 50%;
+        background-color: black;
+      }
+      .smile_mouth {
+        height: 16px;
+        width: 16px;
+        border-radius: 50%;
+        background-image: linear-gradient(black 65%, transparent 65%);;
+        display: block;
+        position: absolute;
+        bottom: -10%;
+        right: calc(50% - 8px);
+      }
+    }
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 68px;
+    .smile {
+      position: absolute;
+      content: "";
+      height: var(--smile-size);
+      width: var(--smile-size);
+      left: var(--swipe-gap);
+      bottom: var(--swipe-gap);;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+      border-radius: 50%;
+      .smile_leye {
+        height: 6px;
+        width: 6px;
+        border-radius: 50%;
+        background-color: black;
+        display: block;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+      }
+      .smile_reye {
+        height: 6px;
+        width: 6px;
+        border-radius: 50%;
+        background-color: black;
+        display: block;
+        position: absolute;
+        top: 20%;
+        right: 20%;
+      }
+      .smile_mouth {
+        height: var(--smile-mouth-size);
+        width: var(--smile-mouth-size);
+        border-radius: 50%;
+        background-image: linear-gradient(black 65%, transparent 65%);;
+        display: block;
+        position: absolute;
+        bottom: 10%;
+        right: calc(50% - var(--smile-mouth-size) / 2);
+      }
+    }
+  }
+}
 
 
 
-@import "media";
+
+
+
+
+
+
